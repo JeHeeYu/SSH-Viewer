@@ -6,22 +6,29 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.5 REQUIRED COMPONENTS Quick)
 
+set(CMAKE_AUTORCC ON)
+
 qt_standard_project_setup(REQUIRES 6.5)
 
+qt_add_resources(SHARED_RESOURCES ${RESOURCE_FILES})
+
 qt_add_executable(appSSHViewer
-    main.cpp
+    src/main.cpp
 )
 
 qt_add_qml_module(appSSHViewer
     URI SSHViewer
     VERSION 1.0
     QML_FILES
-        Main.qml
+    qml/Main.qml
+    qml/Components/ImageButton.qml
+    qml/Consts/Images.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
 # explicit, fixed bundle identifier manually though.
+
 set_target_properties(appSSHViewer PROPERTIES
 #    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appSSHViewer
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
