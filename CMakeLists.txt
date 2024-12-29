@@ -23,6 +23,7 @@ qt_add_qml_module(appSSHViewer
     qml/Main.qml
     qml/Components/ImageButton.qml
     qml/Consts/Images.qml
+    RESOURCES qml.qrc
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

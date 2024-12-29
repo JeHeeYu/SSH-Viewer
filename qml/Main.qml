@@ -16,4 +16,10 @@ Window {
         width: 30
         height: 30
     }
+
+    Rectangle {
+        width: 200
+        height: 300
+        color: 'black'
+    }
 }
