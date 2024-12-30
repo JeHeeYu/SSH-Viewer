@@ -5,7 +5,7 @@ Image {
     width: 640
     height: 480
 
-    signal imageClic()
+    signal clicked()
 
     MouseArea {
         anchors.fill: parent
@@ -13,7 +13,7 @@ Image {
         cursorShape: Qt.PointingHandCursor
 
         onClicked: {
-            root.imageClic()
+            root.clicked()
         }
     }
 }
