@@ -2,20 +2,26 @@
 
 SSHModel::SSHModel(QObject *parent) : QObject(parent)
 {
+    SSHData *sshData = new SSHData("Jehee123", "Jehee 2", 22, this);
 
+    sshList.append(sshData);
 }
 
 void SSHModel::addSSHList(const QString &hostName, const QString &userName, const QString &password)
 {
-    SSHManager *newConnection = new SSHManager(hostName, userName, password, 22);
-    if (newConnection->connect()) {
-        sshList.append(newConnection);
+    SSHData *sshData = new SSHData(hostName, userName, 22, this);
+    sshList.append(sshData);
 
-        qDebug() << "SSH connection added successfully.";
-    }
-    else {
-        delete newConnection;
+    emit sshListChanged();
+    qDebug() << "Added SSH: Host=" << hostName << ", User=" << userName;
+}
 
-        qDebug() << "Failed to add SSH connection.";
+QList<QObject*> SSHModel::getSshList() const
+{
+    QList<QObject*> objectList;
+    for (auto *sshData : sshList)
+    {
+        objectList.append(sshData);
     }
+    return objectList;
 }

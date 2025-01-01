@@ -35,7 +35,7 @@ Window {
             width: parent.width
             height: parent.height
             delegate: sshListDelegate
-            model: sshListModel
+            model: sshModel.sshList
         }
     }
 
@@ -64,8 +64,7 @@ Window {
 
             Text {
                 anchors.centerIn: parent
-                text: model.name
-                color: "black"
+                text: "Host: " + modelData.hostName + ", User: " + modelData.userName
             }
         }
     }
