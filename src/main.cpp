@@ -1,11 +1,19 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
+
+#include "include/models/sshmodel.h"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
+    SSHModel sshModel;
+
     QQmlApplicationEngine engine;
+
+    engine.rootContext()->setContextProperty("sshModel", &sshModel);
+
     const QUrl url(QStringLiteral("qrc:/qml/Main.qml"));
     QObject::connect(
         &engine,

@@ -33,6 +33,7 @@ qt_add_qml_module(appSSHViewer
     SOURCES src/models/sshmanager.cpp
     SOURCES include/models/sshmanager.h
     SOURCES include/common.h
+    SOURCES include/singleton.h
 )
 
 set_target_properties(appSSHViewer PROPERTIES
