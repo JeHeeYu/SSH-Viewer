@@ -2,7 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
-#include "include/models/sshmodel.h"
+#include "ssh/sshmodel.h"
 
 int main(int argc, char *argv[])
 {

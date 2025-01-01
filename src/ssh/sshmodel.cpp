@@ -1,4 +1,4 @@
-#include "models/sshmodel.h"
+#include "ssh/sshmodel.h"
 
 SSHModel::SSHModel(QObject *parent) : QObject(parent)
 {

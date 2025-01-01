@@ -18,7 +18,7 @@ qt_add_resources(SHARED_RESOURCES ${RESOURCE_FILES})
 
 qt_add_executable(appSSHViewer
     src/main.cpp
-    src/models/sshmodel.cpp
+    src/ssh/sshmodel.cpp
 )
 
 qt_add_qml_module(appSSHViewer
@@ -29,9 +29,9 @@ qt_add_qml_module(appSSHViewer
     qml/Main.qml
     qml/Components/ImageButton.qml
     qml/Consts/Images.qml
-    SOURCES include/models/sshmodel.h
-    SOURCES src/models/sshmanager.cpp
-    SOURCES include/models/sshmanager.h
+    SOURCES include/ssh/sshmodel.h
+    SOURCES src/ssh/sshmanager.cpp
+    SOURCES include/ssh/sshmanager.h
     SOURCES include/common.h
     SOURCES include/singleton.h
 )

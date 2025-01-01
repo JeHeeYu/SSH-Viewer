@@ -5,7 +5,7 @@
 #include <QDebug>
 
 #include "include/singleton.h"
-#include "models/sshmanager.h"
+#include "ssh/sshmanager.h"
 
 class SSHModel : public QObject, public Singleton<SSHModel>
 {

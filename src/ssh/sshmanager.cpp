@@ -1,4 +1,4 @@
-#include "models/sshmanager.h"
+#include "ssh/sshmanager.h"
 
 SSHManager::SSHManager(const QString &hostName, const QString &userName, const QString &password, int port)
     : hostName(hostName), userName(userName), password(password), port(port) {}
