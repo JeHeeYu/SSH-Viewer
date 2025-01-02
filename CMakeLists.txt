@@ -5,7 +5,7 @@ project(SSHViewer VERSION 0.1 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTORCC ON)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Quick)
+find_package(Qt6 6.5 REQUIRED COMPONENTS Quick Sql)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(LIBSSH REQUIRED libssh)
@@ -33,9 +33,11 @@ qt_add_qml_module(appSSHViewer
     SOURCES src/ssh/sshmanager.cpp
     SOURCES include/ssh/sshmanager.h
     SOURCES include/common.h
-    SOURCES include/singleton.h
+    SOURCES include/singleton.hpp
     SOURCES include/ssh/sshdata.h
     SOURCES src/ssh/sshdata.cpp
+    SOURCES include/databasemanager.h
+    SOURCES src/databasemanager.cpp
 )
 
 set_target_properties(appSSHViewer PROPERTIES
@@ -51,7 +53,11 @@ target_include_directories(appSSHViewer
 )
 
 target_link_directories(appSSHViewer PRIVATE ${LIBSSH_LIBRARY_DIRS})
-target_link_libraries(appSSHViewer PRIVATE ${LIBSSH_LIBRARIES} Qt6::Quick)
+target_link_libraries(appSSHViewer PRIVATE
+    ${LIBSSH_LIBRARIES}
+    Qt6::Quick
+    Qt6::Sql
+)
 
 include(GNUInstallDirs)
 install(TARGETS appSSHViewer

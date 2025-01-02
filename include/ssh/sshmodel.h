@@ -5,9 +5,10 @@
 #include <QList>
 #include <QDebug>
 
-#include "include/singleton.h"
+#include "include/singleton.hpp"
 #include "ssh/sshdata.h"
 #include "ssh/sshmanager.h"
+#include "include/databasemanager.h"
 
 class SSHModel : public QObject, public Singleton<SSHModel>
 {

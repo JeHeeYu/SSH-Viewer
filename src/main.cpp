@@ -3,10 +3,14 @@
 #include <QQmlContext>
 
 #include "ssh/sshmodel.h"
+#include "include/databasemanager.h"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
+
+    DatabaseManager databaseManager;
+    DATABASEMANAGER()->init();
 
     SSHModel sshModel;
 

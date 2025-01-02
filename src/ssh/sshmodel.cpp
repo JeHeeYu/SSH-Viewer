@@ -2,9 +2,10 @@
 
 SSHModel::SSHModel(QObject *parent) : QObject(parent)
 {
-    SSHData *sshData = new SSHData("Jehee123", "Jehee 2", 22, this);
+    QVector<QString> keys = {"hostName", "userName", "port"};
+    QVector<QVariant> values = {"example.com 1", "admin", 22};
 
-    sshList.append(sshData);
+    DATABASEMANAGER()->addEntry(keys, values);
 }
 
 void SSHModel::addSSHList(const QString &hostName, const QString &userName, const QString &password)
