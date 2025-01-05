@@ -21,6 +21,7 @@ public:
 
     bool init();
     bool addEntry(const QVector<QString> &keys, const QVector<QVariant> &values);
+    bool removeEntry(const QVector<QString> &keys, const QVector<QVariant> &values);
     QList<QVariantList> getEntry();
     bool clearEntry();
 

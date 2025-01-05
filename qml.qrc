@@ -1,8 +1,11 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/Main.qml</file>
-	<file>qml/Consts/Images.qml</file>
-	<file>qml/Components/ImageButton.qml</file>
+        <file>qml/Consts/Images.qml</file>
+        <file>qml/Components/ImageButton.qml</file>
         <file>assets/images/add.png</file>
+        <file>qml/Components/CustomButton.qml</file>
+        <file>assets/images/close.svg</file>
+        <file>assets/images/ssh_list.svg</file>
     </qresource>
 </RCC>

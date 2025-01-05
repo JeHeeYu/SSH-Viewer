@@ -19,6 +19,7 @@ public:
     explicit SSHModel(QObject *parent = nullptr);
 
     Q_INVOKABLE void addSSHList(const QString &hostName, const QString &userName, const QString &password);
+    Q_INVOKABLE void removeSSHList(const QString &hostName, const QString &userName);
 
     QList<QObject*> getSSHList() const;
 

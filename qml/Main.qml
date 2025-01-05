@@ -1,11 +1,12 @@
 import QtQuick
 import QtQuick.Controls
+
 import "Components"
 import "Consts"
 
 Window {
-    width: 600//Screen.width
-    height: 500//Screen.height
+    width: Screen.width
+    height: Screen.height
     visible: true
     title: qsTr("SSH Connection Manager")
 
@@ -54,6 +55,7 @@ Window {
             width: parent.width
             height: 50
 
+
             Rectangle {
                 anchors.fill: parent
                 anchors.topMargin: -border.width
@@ -62,12 +64,38 @@ Window {
                 border.color: "black"
             }
 
-            Text {
-                anchors.centerIn: parent
-                text: "Host: " + modelData.hostName + ", User: " + modelData.userName
+            Row {
+                width: parent.width
+                height: parent.height
+                anchors.fill: parent
+                anchors.leftMargin: 10
+                spacing: 10
+
+                Text {
+                    text: "Host: " + modelData.hostName + ", User: " + modelData.userName
+                    anchors.leftMargin: 10
+                    anchors.verticalCenter: parent.verticalCenter
+                    horizontalAlignment: Text.AlignLeft
+                    verticalAlignment: Text.AlignVCenter
+                    width: parent.width - 40
+                    elide: Text.ElideRight
+                }
+
+                ImageButton {
+                    source: images.close
+                    width: 20
+                    height: 20
+                    anchors.rightMargin: 10
+                    anchors.verticalCenter: parent.verticalCenter
+                    onClicked: {
+                        console.log("Remove button clicked for Host:", modelData.hostName);
+                        sshModel.removeSSHList(modelData.hostName, modelData.userName);
+                    }
+                }
             }
         }
     }
+
 
     Popup {
         id: sshPopup
@@ -125,47 +153,93 @@ Window {
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
 
-                TextField {
-                    id: hostField
-                    placeholderText: "Host"
-                    color: "black"
+                Row {
+                    spacing: 10
                     anchors.horizontalCenter: parent.horizontalCenter
-                    width: parent.width * 0.8
+
+                    Text {
+                        text: "Host:"
+                        font.pixelSize: 14
+                        color: "black"
+                        width: 80
+                        verticalAlignment: Text.AlignVCenter
+                    }
+                    TextField {
+                        id: hostField
+                        placeholderText: "Enter host"
+                        color: "black"
+                        width: 200
+                    }
                 }
 
-                TextField {
-                    id: usernameField
-                    placeholderText: "Username"
-                    color: "black"
+                Row {
+                    spacing: 10
                     anchors.horizontalCenter: parent.horizontalCenter
-                    width: parent.width * 0.8
+
+                    Text {
+                        text: "Username:"
+                        font.pixelSize: 14
+                        color: "black"
+                        width: 80
+                        verticalAlignment: Text.AlignVCenter
+                    }
+                    TextField {
+                        id: usernameField
+                        placeholderText: "Enter username"
+                        color: "black"
+                        width: 200
+                    }
                 }
 
-                TextField {
-                    id: passwordField
-                    placeholderText: "Password"
-                    color: "black"
+                Row {
+                    spacing: 10
                     anchors.horizontalCenter: parent.horizontalCenter
-                    width: parent.width * 0.8
-                    echoMode: TextInput.Password
+
+                    Text {
+                        text: "Password:"
+                        font.pixelSize: 14
+                        color: "black"
+                        width: 80
+                        verticalAlignment: Text.AlignVCenter
+                    }
+                    TextField {
+                        id: passwordField
+                        placeholderText: "Enter password"
+                        color: "black"
+                        width: 200
+                        echoMode: TextInput.Password
+                    }
                 }
 
-                TextField {
-                    id: portField
-                    placeholderText: "Port"
+                Row {
+                    spacing: 10
                     anchors.horizontalCenter: parent.horizontalCenter
-                    width: parent.width * 0.8
-                    text: "22"
+
+                    Text {
+                        text: "Port:"
+                        font.pixelSize: 14
+                        color: "black"
+                        width: 80
+                        verticalAlignment: Text.AlignVCenter
+                    }
+                    TextField {
+                        id: portField
+                        placeholderText: "Enter port"
+                        color: "black"
+                        width: 200
+                        text: "22"
+                    }
                 }
+
 
                 Row {
                     spacing: 20
                     anchors.horizontalCenter: parent.horizontalCenter
 
-                    Button {
+                    CustomButton {
+                        text: "Add"
                         width: 100
-                        height: 20
-
+                        height: 30
                         onClicked: {
                             if (hostField.text !== "" && usernameField.text !== "" && passwordField.text !== "") {
                                 sshListModel.append({
@@ -175,27 +249,25 @@ Window {
 
                                 sshPopup.close();
 
+
+                                sshModel.addSSHList(hostField.text, usernameField.text, passwordField.text);
+
                                 hostField.text = "";
                                 usernameField.text = "";
                                 passwordField.text = "";
                                 portField.text = "22";
-
-                                sshModel.addSSHList(hostField.text, usernameField.text, passwordField.text);
                             }
                         }
-
                     }
 
-                    // Cancel 버튼
-                    Button {
+                    CustomButton {
                         text: "Cancel"
+                        width: 100
+                        height: 30
                         onClicked: sshPopup.close
                     }
                 }
             }
         }
     }
-
-
-
 }
