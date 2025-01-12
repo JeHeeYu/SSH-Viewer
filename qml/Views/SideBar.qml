@@ -1,6 +1,8 @@
 import QtQuick
-import "./Consts"
-import "./Components"
+
+import "../Consts"
+import "../Components"
+import "./"
 
 Item {
     id: root
@@ -15,7 +17,7 @@ Item {
 
     Rectangle {
         id: mainArea
-        width: parent.height * 0.4
+        width: parent.height * 0.5
         height: parent.height * 0.8
         color: colors.mainBackground
         border.color: colors.line
@@ -80,6 +82,27 @@ Item {
                         currentTabButtonIndex = editTabButtonIndex
                     }
                 }
+            }
+        }
+
+        Rectangle {
+            id: contentContainer
+            width: parent.width - buttonContainer.width
+            height: parent.height
+            color: colors.mainBackground
+            border.color: colors.line
+            border.width: 1
+            anchors.right: parent.right
+            anchors.top: parent.top
+
+            SSHList {
+                anchors.fill: parent
+                visible: currentTabButtonIndex === listTabButtonIndex
+            }
+
+            EditList {
+                anchors.fill: parent
+                visible: currentTabButtonIndex === editTabButtonIndex
             }
         }
     }

@@ -5,11 +5,13 @@ Image {
     width: 640
     height: 480
 
+    property bool hoverEnabled: true
+
     signal clicked()
 
     MouseArea {
         anchors.fill: parent
-        hoverEnabled: true
+        hoverEnabled: hoverEnabled
         cursorShape: Qt.PointingHandCursor
 
         onClicked: {

@@ -10,9 +10,11 @@
         <file>qml/Consts/Colors.qml</file>
         <file>assets/images/list_icon_disable.svg</file>
         <file>assets/images/list_icon_enable.svg</file>
-        <file>qml/SideBar.qml</file>
+        <file>qml/Views/SideBar.qml</file>
         <file>qml/Consts/Strings.qml</file>
         <file>assets/images/edit_icon_disable.svg</file>
         <file>assets/images/edit_icon_enable.svg</file>
+        <file>qml/Views/SSHList.qml</file>
+        <file>qml/Views/EditList.qml</file>
     </qresource>
 </RCC>

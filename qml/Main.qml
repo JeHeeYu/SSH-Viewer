@@ -4,6 +4,7 @@ import QtQuick.Controls
 import "Components"
 import "Consts"
 import "./"
+import "./Views"
 
 Window {
     width: Screen.width
@@ -30,97 +31,6 @@ Window {
     SideBar {
 
     }
-
-    // TabButton {
-    //     id: exampleComponent
-    //     anchors.centerIn: parent
-    //     enabledImageSource: images.sshListEnable
-    //     disabledImageSource: images.sshListDisable
-    //     imageWidth: 48
-    //     imageHeight: 48
-    //     text: "Hello World"
-    //     fontSize: 16
-    //     enabledColor: colors.tabEnable
-    //     hoverColor: colors.tabHoverEnable
-    //     disabledColor: colors.transparent
-    //     textEnabledColor: colors.white
-    //     textHoverColor: colors.white
-    //     textDisabledColor: colors.disable
-    // }
-
-    // Rectangle {
-        // width: 350
-        // height: parent.height * 0.7
-        // anchors.left: parent.left
-        // anchors.bottom: parent.bottom
-        // border.color: "black"
-        // border.width: 1
-
-    //     ListView {
-    //         id: sshListView
-    //         width: parent.width
-    //         height: parent.height
-    //         delegate: sshListDelegate
-    //         model: sshModel.sshList
-    //     }
-    // }
-
-    // ListModel {
-    //     id: sshListModel
-    //     ListElement { name: "Item 1" }
-    //     ListElement { name: "Item 2" }
-    //     ListElement { name: "Item 3" }
-    // }
-
-    // Component {
-    //     id: sshListDelegate
-
-    //     Rectangle {
-    //         id: sshListItem
-    //         width: parent.width
-    //         height: 50
-
-
-    //         Rectangle {
-    //             anchors.fill: parent
-    //             anchors.topMargin: -border.width
-    //             anchors.bottomMargin: -border.width
-    //             border.width: 1
-    //             border.color: "black"
-    //         }
-
-    //         Row {
-    //             width: parent.width
-    //             height: parent.height
-    //             anchors.fill: parent
-    //             anchors.leftMargin: 10
-    //             spacing: 10
-
-    //             Text {
-    //                 text: "Host: " + modelData.hostName + ", User: " + modelData.userName
-    //                 anchors.leftMargin: 10
-    //                 anchors.verticalCenter: parent.verticalCenter
-    //                 horizontalAlignment: Text.AlignLeft
-    //                 verticalAlignment: Text.AlignVCenter
-    //                 width: parent.width - 40
-    //                 elide: Text.ElideRight
-    //             }
-
-    //             ImageButton {
-    //                 source: images.close
-    //                 width: 20
-    //                 height: 20
-    //                 anchors.rightMargin: 10
-    //                 anchors.verticalCenter: parent.verticalCenter
-    //                 onClicked: {
-    //                     console.log("Remove button clicked for Host:", modelData.hostName);
-    //                     sshModel.removeSSHList(modelData.hostName, modelData.userName);
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
-
 
     // Popup {
     //     id: sshPopup
