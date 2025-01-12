@@ -6,8 +6,13 @@
         <file>assets/images/add.png</file>
         <file>qml/Components/CustomButton.qml</file>
         <file>assets/images/close.svg</file>
-        <file>assets/images/ssh_list.svg</file>
         <file>qml/Components/TabButton.qml</file>
         <file>qml/Consts/Colors.qml</file>
+        <file>assets/images/list_icon_disable.svg</file>
+        <file>assets/images/list_icon_enable.svg</file>
+        <file>qml/SideBar.qml</file>
+        <file>qml/Consts/Strings.qml</file>
+        <file>assets/images/edit_icon_disable.svg</file>
+        <file>assets/images/edit_icon_enable.svg</file>
     </qresource>
 </RCC>

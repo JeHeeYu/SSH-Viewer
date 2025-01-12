@@ -1,18 +1,29 @@
 import QtQuick
 
+import "../Consts"
+
 Item {
     id: root
     width: 150
     height: 100
 
-    property color enabledColor: "transparent"
-    property color hoverColor: "transparent"
-    property color disabledColor: "transparent"
+    Colors { id: colors }
+
+    signal clicked()
+
+    property color enabledColor: colors.transparent
+    property color hoverColor: colors.transparent
+    property color disabledColor: colors.transparent
+
+    property color textEnabledColor: colors.transparent
+    property color textHoverColor: colors.transparent
+    property color textDisabledColor: colors.transparent
 
     property bool isEnabled: true
     property bool isHovered: false
 
-    property string imageSource: ""
+    property string enabledImageSource: ""
+    property string disabledImageSource: ""
     property int imageWidth: 24
     property int imageHeight: 24
     property string text: ""
@@ -21,7 +32,7 @@ Item {
     Rectangle {
         id: background
         anchors.fill: parent
-        border.color: "black"
+        border.color: colors.transparent
         border.width: 1
         radius: 8
 
@@ -35,7 +46,7 @@ Item {
             hoverEnabled: true
 
             onClicked: {
-                isEnabled = !isEnabled
+                root.clicked()
             }
 
             onEntered: {
@@ -54,7 +65,7 @@ Item {
 
             Image {
                 id: icon
-                source: root.imageSource
+                source: isEnabled ? root.enabledImageSource : root.disabledImageSource
                 width: root.imageWidth
                 height: root.imageHeight
                 fillMode: Image.PreserveAspectFit
@@ -66,7 +77,9 @@ Item {
                 text: root.text
                 font.pixelSize: root.fontSize
                 horizontalAlignment: Text.AlignHCenter
-                color: "black"
+                color: isHovered
+                    ? root.textHoverColor
+                    : (isEnabled ? root.textEnabledColor : root.textDisabledColor)
                 anchors.horizontalCenter: parent.horizontalCenter
             }
         }
