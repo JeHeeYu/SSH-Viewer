@@ -36,6 +36,7 @@ bool DatabaseManager::init()
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             hostName TEXT NOT NULL,
             userName TEXT NOT NULL,
+            password TEXT NOT NULL,
             port INTEGER NOT NULL
         )
     )";
@@ -61,7 +62,6 @@ bool DatabaseManager::addEntry(const QVector<QString> &keys, const QVector<QVari
         return false;
     }
 
-    // Check if the entry already exists
     QSqlQuery checkQuery(db);
     checkQuery.prepare("SELECT COUNT(*) FROM ssh_list WHERE hostName = :hostName AND userName = :userName");
     int hostNameIndex = keys.indexOf("hostName");
@@ -85,7 +85,6 @@ bool DatabaseManager::addEntry(const QVector<QString> &keys, const QVector<QVari
         return false;
     }
 
-    // Proceed with insertion if no duplicate exists
     QString queryStr = "INSERT INTO ssh_list (";
     queryStr += keys.join(", ");
     queryStr += ") VALUES (";
@@ -100,6 +99,7 @@ bool DatabaseManager::addEntry(const QVector<QString> &keys, const QVector<QVari
     query.prepare(queryStr);
 
     for (int i = 0; i < keys.size(); ++i) {
+        qDebug() << "Binding key:" << keys[i] << "with value:" << values[i];
         query.bindValue(":" + keys[i], values[i]);
     }
 
@@ -166,7 +166,7 @@ QList<QVariantList> DatabaseManager::getEntry()
     }
 
     QSqlQuery query(db);
-    query.prepare("SELECT hostName, userName, port FROM ssh_list");
+    query.prepare("SELECT hostName, userName, password, port FROM ssh_list");
 
     if (!query.exec()) {
         qDebug() << "Failed to retrieve SSH entries:" << query.lastError().text();
@@ -177,11 +177,12 @@ QList<QVariantList> DatabaseManager::getEntry()
         QVariantList entry;
         entry << query.value(0).toString()
               << query.value(1).toString()
-              << query.value(2).toInt();
+              << query.value(2).toString()
+              << query.value(3).toInt();
         entries.append(entry);
     }
 
-    qDebug() << "Retrieved SSH entries from database.";
+    qDebug() << "Retrieved SSH entries from database." << entries;
     return entries;
 }
 

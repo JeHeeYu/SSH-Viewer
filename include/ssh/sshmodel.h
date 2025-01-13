@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QList>
 #include <QDebug>
+#include <QTimer>
 
 #include "include/singleton.hpp"
 #include "ssh/sshdata.h"
@@ -18,10 +19,13 @@ class SSHModel : public QObject, public Singleton<SSHModel>
 public:
     explicit SSHModel(QObject *parent = nullptr);
 
-    Q_INVOKABLE void addSSHList(const QString &hostName, const QString &userName, const QString &password);
+    Q_INVOKABLE void addSSHList(const QString &hostName, const QString &userName, const QString &password, const QString &port);
     Q_INVOKABLE void removeSSHList(const QString &hostName, const QString &userName);
 
     QList<QObject*> getSSHList() const;
+
+private:
+    void checkConnections();
 
 signals:
     void sshListChanged();

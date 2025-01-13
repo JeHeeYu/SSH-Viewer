@@ -7,7 +7,7 @@
 class SSHManager
 {
 public:
-    SSHManager(const QString &hostName, const QString &userName, const QString &password, int port = 22);
+    SSHManager(const QString &hostName, const QString &userName, const QString &password, const int &port);
     ~SSHManager();
 
     bool connect();

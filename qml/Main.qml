@@ -32,177 +32,177 @@ Window {
 
     }
 
-    // Popup {
-    //     id: sshPopup
-    //     width: 400
-    //     height: 300
-    //     modal: true
-    //     dim: true
-    //     closePolicy: Popup.CloseOnEscape
+    Popup {
+        id: sshPopup
+        width: 400
+        height: 300
+        modal: true
+        dim: true
+        closePolicy: Popup.CloseOnEscape
 
-    //     x: (parent.width - width) / 2
-    //     y: (parent.height - height) / 2
+        x: (parent.width - width) / 2
+        y: (parent.height - height) / 2
 
-    //     Rectangle {
-    //         id: popupContent
-    //         anchors.fill: parent
-    //         color: "white"
-    //         radius: 10
-    //         border.color: "#cccccc"
-    //         border.width: 1
+        Rectangle {
+            id: popupContent
+            anchors.fill: parent
+            color: "white"
+            radius: 10
+            border.color: "#cccccc"
+            border.width: 1
 
-    //         MouseArea {
-    //             id: dragArea
-    //             anchors.fill: parent
-    //             cursorShape: Qt.OpenHandCursor
+            MouseArea {
+                id: dragArea
+                anchors.fill: parent
+                cursorShape: Qt.OpenHandCursor
 
-    //             property real startX
-    //             property real startY
+                property real startX
+                property real startY
 
-    //             onPressed: function(event) {
-    //                 cursorShape = Qt.ClosedHandCursor;
-    //                 startX = sshPopup.x - event.x;
-    //                 startY = sshPopup.y - event.y;
-    //             }
+                onPressed: function(event) {
+                    cursorShape = Qt.ClosedHandCursor;
+                    startX = sshPopup.x - event.x;
+                    startY = sshPopup.y - event.y;
+                }
 
-    //             onReleased: function() {
-    //                 cursorShape = Qt.OpenHandCursor;
-    //             }
+                onReleased: function() {
+                    cursorShape = Qt.OpenHandCursor;
+                }
 
-    //             onPositionChanged: function(event) {
-    //                 sshPopup.x = startX + event.x;
-    //                 sshPopup.y = startY + event.y;
-    //             }
-    //         }
+                onPositionChanged: function(event) {
+                    sshPopup.x = startX + event.x;
+                    sshPopup.y = startY + event.y;
+                }
+            }
 
-    //         Column {
-    //             anchors.fill: parent
-    //             anchors.margins: 20
-    //             spacing: 10
+            Column {
+                anchors.fill: parent
+                anchors.margins: 20
+                spacing: 10
 
-    //             Text {
-    //                 text: "SSH Connection"
-    //                 font.bold: true
-    //                 font.pixelSize: 18
-    //                 horizontalAlignment: Text.AlignHCenter
-    //                 anchors.horizontalCenter: parent.horizontalCenter
-    //             }
+                Text {
+                    text: "SSH Connection"
+                    font.bold: true
+                    font.pixelSize: 18
+                    horizontalAlignment: Text.AlignHCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
 
-    //             Row {
-    //                 spacing: 10
-    //                 anchors.horizontalCenter: parent.horizontalCenter
+                Row {
+                    spacing: 10
+                    anchors.horizontalCenter: parent.horizontalCenter
 
-    //                 Text {
-    //                     text: "Host:"
-    //                     font.pixelSize: 14
-    //                     color: "black"
-    //                     width: 80
-    //                     verticalAlignment: Text.AlignVCenter
-    //                 }
-    //                 TextField {
-    //                     id: hostField
-    //                     placeholderText: "Enter host"
-    //                     color: "black"
-    //                     width: 200
-    //                 }
-    //             }
+                    Text {
+                        text: "Host:"
+                        font.pixelSize: 14
+                        color: "black"
+                        width: 80
+                        verticalAlignment: Text.AlignVCenter
+                    }
+                    TextField {
+                        id: hostField
+                        placeholderText: "Enter host"
+                        color: "black"
+                        width: 200
+                    }
+                }
 
-    //             Row {
-    //                 spacing: 10
-    //                 anchors.horizontalCenter: parent.horizontalCenter
+                Row {
+                    spacing: 10
+                    anchors.horizontalCenter: parent.horizontalCenter
 
-    //                 Text {
-    //                     text: "Username:"
-    //                     font.pixelSize: 14
-    //                     color: "black"
-    //                     width: 80
-    //                     verticalAlignment: Text.AlignVCenter
-    //                 }
-    //                 TextField {
-    //                     id: usernameField
-    //                     placeholderText: "Enter username"
-    //                     color: "black"
-    //                     width: 200
-    //                 }
-    //             }
+                    Text {
+                        text: "Username:"
+                        font.pixelSize: 14
+                        color: "black"
+                        width: 80
+                        verticalAlignment: Text.AlignVCenter
+                    }
+                    TextField {
+                        id: usernameField
+                        placeholderText: "Enter username"
+                        color: "black"
+                        width: 200
+                    }
+                }
 
-    //             Row {
-    //                 spacing: 10
-    //                 anchors.horizontalCenter: parent.horizontalCenter
+                Row {
+                    spacing: 10
+                    anchors.horizontalCenter: parent.horizontalCenter
 
-    //                 Text {
-    //                     text: "Password:"
-    //                     font.pixelSize: 14
-    //                     color: "black"
-    //                     width: 80
-    //                     verticalAlignment: Text.AlignVCenter
-    //                 }
-    //                 TextField {
-    //                     id: passwordField
-    //                     placeholderText: "Enter password"
-    //                     color: "black"
-    //                     width: 200
-    //                     echoMode: TextInput.Password
-    //                 }
-    //             }
+                    Text {
+                        text: "Password:"
+                        font.pixelSize: 14
+                        color: "black"
+                        width: 80
+                        verticalAlignment: Text.AlignVCenter
+                    }
+                    TextField {
+                        id: passwordField
+                        placeholderText: "Enter password"
+                        color: "black"
+                        width: 200
+                        echoMode: TextInput.Password
+                    }
+                }
 
-    //             Row {
-    //                 spacing: 10
-    //                 anchors.horizontalCenter: parent.horizontalCenter
+                Row {
+                    spacing: 10
+                    anchors.horizontalCenter: parent.horizontalCenter
 
-    //                 Text {
-    //                     text: "Port:"
-    //                     font.pixelSize: 14
-    //                     color: "black"
-    //                     width: 80
-    //                     verticalAlignment: Text.AlignVCenter
-    //                 }
-    //                 TextField {
-    //                     id: portField
-    //                     placeholderText: "Enter port"
-    //                     color: "black"
-    //                     width: 200
-    //                     text: ""
-    //                 }
-    //             }
-
-
-    //             Row {
-    //                 spacing: 20
-    //                 anchors.horizontalCenter: parent.horizontalCenter
-
-    //                 CustomButton {
-    //                     text: "Add"
-    //                     width: 100
-    //                     height: 30
-    //                     onClicked: {
-    //                         if (hostField.text !== "" && usernameField.text !== "" && passwordField.text !== "") {
-    //                             sshListModel.append({
-    //                                 name: "Host: " + hostField.text + ", User: " + usernameField.text
-    //                             });
-    //                             console.log("Added SSH entry: Host:", hostField.text, "User:", usernameField.text);
-
-    //                             sshPopup.close();
+                    Text {
+                        text: "Port:"
+                        font.pixelSize: 14
+                        color: "black"
+                        width: 80
+                        verticalAlignment: Text.AlignVCenter
+                    }
+                    TextField {
+                        id: portField
+                        placeholderText: "Enter port"
+                        color: "black"
+                        width: 200
+                        text: ""
+                    }
+                }
 
 
-    //                             sshModel.addSSHList(hostField.text, usernameField.text, passwordField.text, port);
+                Row {
+                    spacing: 20
+                    anchors.horizontalCenter: parent.horizontalCenter
 
-    //                             hostField.text = "";
-    //                             usernameField.text = "";
-    //                             passwordField.text = "";
-    //                             portField.text = "";
-    //                         }
-    //                     }
-    //                 }
+                    CustomButton {
+                        text: "Add"
+                        width: 100
+                        height: 30
+                        onClicked: {
+                            if (hostField.text !== "" && usernameField.text !== "" && passwordField.text !== "") {
+                                // sshListModel.append({
+                                //     name: "Host: " + hostField.text + ", User: " + usernameField.text
+                                // });
+                                console.log("Added SSH entry: Host:", hostField.text, "User:", usernameField.text);
 
-    //                 CustomButton {
-    //                     text: "Cancel"
-    //                     width: 100
-    //                     height: 30
-    //                     onClicked: sshPopup.close
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+                                sshPopup.close();
+
+
+                                sshModel.addSSHList(hostField.text, usernameField.text, passwordField.text, portField.text);
+
+                                hostField.text = "";
+                                usernameField.text = "";
+                                passwordField.text = "";
+                                portField.text = "";
+                            }
+                        }
+                    }
+
+                    CustomButton {
+                        text: "Cancel"
+                        width: 100
+                        height: 30
+                        onClicked: sshPopup.close
+                    }
+                }
+            }
+        }
+    }
 }

@@ -1,7 +1,7 @@
 #include "ssh/sshdata.h"
 
-SSHData::SSHData(const QString &hostName, const QString &userName, int port, QObject *parent)
-    : QObject(parent), hostName(hostName), userName(userName), port(port)
+SSHData::SSHData(const QString &hostName, const QString &userName, const QString &password, const int &port, QObject *parent)
+    : QObject(parent), hostName(hostName), userName(userName), password(password), port(port), isConnected(false)
 {
 }
 
@@ -15,8 +15,20 @@ QString SSHData::getUserName() const
     return userName;
 }
 
-int SSHData::getPort() const {
+QString SSHData::getPassword() const
+{
+    return password;
+}
+
+
+int SSHData::getPort() const
+{
     return port;
+}
+
+bool SSHData::getIsConnected() const
+{
+    return isConnected;
 }
 
 void SSHData::setHostName(const QString &hostName)
@@ -37,11 +49,30 @@ void SSHData::setUserName(const QString &userName)
     }
 }
 
-void SSHData::setPort(int port)
+void SSHData::setPassword(const QString &password)
+{
+    if (this->password != password) {
+        this->password = password;
+
+        emit passwordChanged();
+    }
+}
+
+
+void SSHData::setPort(const int &port)
 {
     if (this->port != port) {
         this->port = port;
 
         emit portChanged();
+    }
+}
+
+void SSHData::setIsConnected(const bool &connected)
+{
+    if (this->isConnected != connected) {
+        this->isConnected = connected;
+
+        emit isConnectedChanged();
     }
 }
