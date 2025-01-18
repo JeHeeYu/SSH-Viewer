@@ -29,7 +29,20 @@ Window {
     }
 
     SideBar {
+        id: sideBar
+        barWidth: parent.width * 0.25
+        barHeight: parent.height * 0.8
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+    }
 
+    TabBarArea {
+        id: tabBarArea
+        areaWidth: parent.width
+        areaHeight: 40
+        anchors.left: sideBar.right
+        anchors.bottom: sideBar.bottom
+        anchors.bottomMargin: sideBar.height + areaHeight
     }
 
     Popup {

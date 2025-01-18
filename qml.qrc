@@ -16,5 +16,6 @@
         <file>assets/images/edit_icon_enable.svg</file>
         <file>qml/Views/SSHList.qml</file>
         <file>qml/Views/EditList.qml</file>
+        <file>qml/Views/TabBarArea.qml</file>
     </qresource>
 </RCC>

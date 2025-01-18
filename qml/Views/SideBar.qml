@@ -6,8 +6,12 @@ import "./"
 
 Item {
     id: root
-    width: parent.width
-    height: parent.height
+
+    width: barWidth
+    height: barHeight
+
+    property int barWidth: parent.width
+    property int barHeight: parent.height
 
     readonly property int tabBarButtonHeight: 65
     readonly property int listTabButtonIndex: 0
@@ -17,8 +21,8 @@ Item {
 
     Rectangle {
         id: mainArea
-        width: parent.height * 0.5
-        height: parent.height * 0.8
+        width: barWidth
+        height: barHeight
         color: colors.mainBackground
         border.color: colors.line
         border.width: 1
@@ -27,7 +31,7 @@ Item {
 
         Rectangle {
             id: buttonContainer
-            width: parent.width * 0.3
+            width: parent.width * 0.25
             height: parent.height
             color: colors.mainBackground
             border.color: colors.line
